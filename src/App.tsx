@@ -22,60 +22,29 @@ function App() {
       "Content-Type": "application/json",
     },
   }).then((res) => {
-    console.log(res.data);
+    //console.log(res.data);
     setdatafromDatabase(res.data);
     // Database(res.data)
   });
 
-  // Axios({
-  //   method: "POST",
-  //   url: "http://localhost:5000", //Vad styr denna? pekar på server porten)
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // }).then((res) => {
-  //   console.log("asdjfhgasdkjfhgasl");
-  //   console.log(res.data);
-  //   // Database(res.data)
-  // });
-  datafromDatabase.map((liBooking:any) => {
-    return (<li key={liBooking._id}>{liBooking.date}</li>)
+  let result = datafromDatabase.map((liBooking:any) => {
+    return (<li key={liBooking.id}>
+      {liBooking.bookingId},
+      {liBooking.date},
+      {liBooking.time},
+      {liBooking.guests},
+      {liBooking.firstName},
+      {liBooking.lastName},
+      {liBooking.email},
+      {liBooking.phone},
+      {liBooking.guestId} </li>)
  
  
   });
-  
-  // function Database(thenewValue: string) {
-  //   setdatafromDatabase(thenewValue);
-  // }
-
-  //event hantering
-  //updatera state
-  //axios.post
-
-  // // Test Guest Lifting state up
-  // function update(x: string) {
-  //   setdatafromDatabase(x);
-  // }
-  // // Test Booking Lifting state up
-  // function Parent() {
-  //   const [aNumber, setANumber] = useState(0);
-
-  //   function updateState(x: number) {
-  //   setANumber(x);
-  //   }
-  //   return(
-  //   <React.Fragmenmt>
-  //     <Booking sendDataToParent={updateState}><Booking>
-  //     <Guests numberFromBooking={aNumber}><Guests>
-  //   <React.Fragmenmt>
-  //     );
-  // }
 
   return (
     <div className="App">
-      {/* HELENA */}
-      {/* <h1>{datafromDatabase}</h1> */}
-      {/* HELENA */}
+      <h1>{result}</h1>
 
       {/* <Booking></Booking> */}
       {/* <Booking addBooking={this.addBooking}></Booking> */}
